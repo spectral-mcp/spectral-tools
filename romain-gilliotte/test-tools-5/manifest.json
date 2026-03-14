@@ -1,0 +1,10 @@
+{
+  "display_name": "Test Tools 5",
+  "description": "Testing with more resources",
+  "base_urls": [
+    "https://api.example.com"
+  ],
+  "tool_count": 1,
+  "published_at": "2026-03-14T20:00:00Z",
+  "spectral_version": "0.1.0"
+}
