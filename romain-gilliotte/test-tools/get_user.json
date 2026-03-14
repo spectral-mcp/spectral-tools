@@ -1,0 +1,21 @@
+{
+  "name": "get_user",
+  "description": "Get user",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string"
+      }
+    }
+  },
+  "request": {
+    "method": "GET",
+    "url": "https://api.example.com/users/{id}",
+    "headers": {},
+    "query": {},
+    "body": null,
+    "content_type": "application/json"
+  },
+  "requires_auth": true
+}
