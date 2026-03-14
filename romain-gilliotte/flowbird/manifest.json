@@ -1,0 +1,11 @@
+{
+  "display_name": "flowbird",
+  "description": "MCP tools for flowbird",
+  "base_urls": [
+    "https://my.flowbirdapp.com",
+    "https://maps.googleapis.com"
+  ],
+  "tool_count": 5,
+  "published_at": "2026-03-14T22:49:00.692142+00:00",
+  "spectral_version": "0.3.1"
+}
