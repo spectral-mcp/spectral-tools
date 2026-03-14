@@ -4,7 +4,7 @@
   "parameters": {
     "properties": {
       "platform": {
-        "description": "The geographic platform or region for which to retrieve vehicles (e.g., 'europe')",
+        "description": "The geographiBLALBLA region for which to retrieve vehicles (e.g., 'europe')",
         "type": "string"
       },
       "useServerSearch": {
