@@ -1,0 +1,82 @@
+{
+  "name": "search_parking_facilities_by_location",
+  "description": "Searches for parking facilities near a specified geographic location. Returns available parking spots filtered by latitude, longitude, distance radius, and location type (kind). Supports pagination via count parameter, result grouping, language localization, and filtering by payment methods. This enables users to discover parking options around their current or desired location.",
+  "parameters": {
+    "properties": {
+      "count": {
+        "description": "Maximum number of results to return (default: 100)",
+        "type": "integer"
+      },
+      "distance": {
+        "description": "Search radius distance in kilometers from the center point",
+        "type": "number"
+      },
+      "grouping": {
+        "description": "Whether to group results by location (optional, 0 or 1)",
+        "type": "integer"
+      },
+      "kind": {
+        "description": "Type of parking location to search for (e.g., 'pos' for point of sale, 'parkFacility' for parking facilities)",
+        "enum": [
+          "pos",
+          "parkFacility"
+        ],
+        "type": "string"
+      },
+      "language": {
+        "description": "Language code for localization (e.g., 'fr' for French)",
+        "type": "string"
+      },
+      "latitude": {
+        "description": "Latitude coordinate for the search center point",
+        "type": "number"
+      },
+      "longitude": {
+        "description": "Longitude coordinate for the search center point",
+        "type": "number"
+      },
+      "withFpsPaymentActive": {
+        "description": "Filter to only show parking facilities with FPS payment method active (optional)",
+        "type": "boolean"
+      }
+    },
+    "required": [
+      "kind"
+    ],
+    "type": "object"
+  },
+  "request": {
+    "method": "GET",
+    "url": "https://my.flowbirdapp.com/search/index/",
+    "headers": {},
+    "query": {
+      "count": {
+        "$param": "count"
+      },
+      "distance": {
+        "$param": "distance"
+      },
+      "grouping": {
+        "$param": "grouping"
+      },
+      "kind": {
+        "$param": "kind"
+      },
+      "language": {
+        "$param": "language"
+      },
+      "latitude": {
+        "$param": "latitude"
+      },
+      "longitude": {
+        "$param": "longitude"
+      },
+      "withFpsPaymentActive": {
+        "$param": "withFpsPaymentActive"
+      }
+    },
+    "body": null,
+    "content_type": "application/json"
+  },
+  "requires_auth": true
+}
