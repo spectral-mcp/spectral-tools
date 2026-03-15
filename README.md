@@ -1,1 +1,1 @@
-# spectral-tools\n\nCommunity tool catalog for Spectral.
+Community tool catalog for Spectral.
