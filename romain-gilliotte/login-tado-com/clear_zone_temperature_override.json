@@ -1,0 +1,30 @@
+{
+  "name": "clear_zone_temperature_override",
+  "description": "Clear the temporary temperature override for a specific zone, returning it to follow its scheduled settings. This reverts any manual temperature control set via set_zone_temperature_override.",
+  "parameters": {
+    "properties": {
+      "home_id": {
+        "description": "The ID of the home/account",
+        "type": "integer"
+      },
+      "zone_id": {
+        "description": "The ID of the zone (room) for which to clear the temperature override",
+        "type": "integer"
+      }
+    },
+    "required": [
+      "home_id",
+      "zone_id"
+    ],
+    "type": "object"
+  },
+  "request": {
+    "method": "DELETE",
+    "url": "https://my.tado.com/api/v2/homes/{home_id}/zones/{zone_id}/overlay",
+    "headers": {},
+    "query": {},
+    "body": null,
+    "content_type": "application/json"
+  },
+  "requires_auth": true
+}

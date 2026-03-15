@@ -1,0 +1,32 @@
+{
+  "name": "get_zone_capabilities",
+  "description": "Retrieve the capabilities and supported features for a specific zone (room), including information about temperature ranges, supported control modes, humidity control, and other zone-specific functionality",
+  "parameters": {
+    "properties": {
+      "home_id": {
+        "description": "The unique identifier of the home",
+        "type": "integer"
+      },
+      "zone_id": {
+        "description": "The unique identifier of the zone (room)",
+        "type": "integer"
+      }
+    },
+    "required": [
+      "home_id",
+      "zone_id"
+    ],
+    "type": "object"
+  },
+  "request": {
+    "method": "GET",
+    "url": "https://my.tado.com/api/v2/homes/{home_id}/zones/{zone_id}/capabilities",
+    "headers": {},
+    "query": {
+      "ngsw-bypass": "true"
+    },
+    "body": null,
+    "content_type": "application/json"
+  },
+  "requires_auth": true
+}

@@ -1,0 +1,25 @@
+{
+  "name": "get_savings_advice",
+  "description": "Retrieve energy savings advice and recommendations for a home, including suggestions for optimizing heating efficiency and reducing energy costs",
+  "parameters": {
+    "properties": {
+      "home_id": {
+        "description": "The unique identifier of the home",
+        "type": "integer"
+      }
+    },
+    "required": [
+      "home_id"
+    ],
+    "type": "object"
+  },
+  "request": {
+    "method": "GET",
+    "url": "https://energy-insights.tado.com/api/homes/{home_id}/savingsAdvice",
+    "headers": {},
+    "query": {},
+    "body": null,
+    "content_type": "application/json"
+  },
+  "requires_auth": true
+}

@@ -1,0 +1,25 @@
+{
+  "name": "get_home_state",
+  "description": "Retrieve the current operational state of a home, including overall home status such as presence mode and presence lock status",
+  "parameters": {
+    "properties": {
+      "home_id": {
+        "description": "The ID of the home to retrieve state for",
+        "type": "string"
+      }
+    },
+    "required": [
+      "home_id"
+    ],
+    "type": "object"
+  },
+  "request": {
+    "method": "GET",
+    "url": "https://my.tado.com/api/v2/homes/{home_id}/state",
+    "headers": {},
+    "query": {},
+    "body": null,
+    "content_type": "application/json"
+  },
+  "requires_auth": true
+}

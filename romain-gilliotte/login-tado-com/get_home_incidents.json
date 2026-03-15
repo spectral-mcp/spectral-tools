@@ -1,0 +1,27 @@
+{
+  "name": "get_home_incidents",
+  "description": "Retrieves a list of incidents for a specific home, including any alerts, warnings, or issues detected in the system",
+  "parameters": {
+    "properties": {
+      "home_id": {
+        "description": "The unique identifier of the home for which to retrieve incidents",
+        "type": "string"
+      }
+    },
+    "required": [
+      "home_id"
+    ],
+    "type": "object"
+  },
+  "request": {
+    "method": "GET",
+    "url": "https://minder.tado.com/v1/homes/{home_id}/incidents",
+    "headers": {},
+    "query": {
+      "ngsw-bypass": "true"
+    },
+    "body": null,
+    "content_type": "application/json"
+  },
+  "requires_auth": true
+}

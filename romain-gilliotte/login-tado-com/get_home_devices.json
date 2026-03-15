@@ -1,0 +1,25 @@
+{
+  "name": "get_home_devices",
+  "description": "Retrieve a list of all devices in a home, including device IDs, names, types, statuses, device serial numbers, and firmware versions for installed heating, cooling, and smart home devices",
+  "parameters": {
+    "properties": {
+      "home_id": {
+        "description": "The unique identifier of the home",
+        "type": "string"
+      }
+    },
+    "required": [
+      "home_id"
+    ],
+    "type": "object"
+  },
+  "request": {
+    "method": "GET",
+    "url": "https://my.tado.com/api/v2/homes/{home_id}/deviceList",
+    "headers": {},
+    "query": {},
+    "body": null,
+    "content_type": "application/json"
+  },
+  "requires_auth": true
+}

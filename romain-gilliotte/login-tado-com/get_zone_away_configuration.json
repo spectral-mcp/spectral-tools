@@ -1,0 +1,30 @@
+{
+  "name": "get_zone_away_configuration",
+  "description": "Retrieve the away configuration settings for a specific zone, including away mode temperature preferences, preheating level, and other zone-specific away behavior settings",
+  "parameters": {
+    "properties": {
+      "home_id": {
+        "description": "The ID of the home/account",
+        "type": "integer"
+      },
+      "zone_id": {
+        "description": "The ID of the zone (room) to retrieve away configuration for",
+        "type": "integer"
+      }
+    },
+    "required": [
+      "home_id",
+      "zone_id"
+    ],
+    "type": "object"
+  },
+  "request": {
+    "method": "GET",
+    "url": "https://my.tado.com/api/v2/homes/{home_id}/zones/{zone_id}/awayConfiguration",
+    "headers": {},
+    "query": {},
+    "body": null,
+    "content_type": "application/json"
+  },
+  "requires_auth": true
+}

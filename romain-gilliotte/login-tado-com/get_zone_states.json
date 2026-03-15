@@ -1,0 +1,25 @@
+{
+  "name": "get_zone_states",
+  "description": "Retrieve the current operational state of all zones in a home, including zone temperatures, heating/cooling status, occupancy, and presence information for each room",
+  "parameters": {
+    "properties": {
+      "home_id": {
+        "description": "The unique identifier of the home",
+        "type": "string"
+      }
+    },
+    "required": [
+      "home_id"
+    ],
+    "type": "object"
+  },
+  "request": {
+    "method": "GET",
+    "url": "https://my.tado.com/api/v2/homes/{home_id}/zoneStates",
+    "headers": {},
+    "query": {},
+    "body": null,
+    "content_type": "application/json"
+  },
+  "requires_auth": true
+}
