@@ -1,0 +1,27 @@
+{
+  "name": "get_home_banners",
+  "description": "Retrieve promotional banners and notifications for a home, including alerts, announcements, or messaging content displayed to users",
+  "parameters": {
+    "properties": {
+      "home_id": {
+        "description": "The unique identifier of the home",
+        "type": "integer"
+      }
+    },
+    "required": [
+      "home_id"
+    ],
+    "type": "object"
+  },
+  "request": {
+    "method": "GET",
+    "url": "https://energy-insights.tado.com/api/homes/{home_id}/banners",
+    "headers": {},
+    "query": {
+      "ngsw-bypass": "true"
+    },
+    "body": null,
+    "content_type": "application/json"
+  },
+  "requires_auth": true
+}

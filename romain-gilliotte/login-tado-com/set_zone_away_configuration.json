@@ -1,0 +1,57 @@
+{
+  "name": "set_zone_away_configuration",
+  "description": "Update the away configuration settings for a specific zone, including away mode temperature preferences (minimum away temperature in celsius), preheating level, and control type (heating/cooling). This allows customizing how a zone behaves when the home is in away mode.",
+  "parameters": {
+    "properties": {
+      "control_type": {
+        "description": "The control type for the zone in away mode (e.g., 'HEATING' for heating control)",
+        "type": "string"
+      },
+      "home_id": {
+        "description": "The home identifier",
+        "type": "string"
+      },
+      "minimum_away_temperature_celsius": {
+        "description": "The minimum temperature in celsius to maintain when the home is in away mode",
+        "type": "number"
+      },
+      "preheating_level": {
+        "description": "The preheating level setting (e.g., 'OFF' to disable preheating)",
+        "type": "string"
+      },
+      "zone_id": {
+        "description": "The zone identifier (room ID)",
+        "type": "string"
+      }
+    },
+    "required": [
+      "home_id",
+      "zone_id",
+      "control_type",
+      "preheating_level",
+      "minimum_away_temperature_celsius"
+    ],
+    "type": "object"
+  },
+  "request": {
+    "method": "PUT",
+    "url": "https://my.tado.com/api/v2/homes/{home_id}/zones/{zone_id}/awayConfiguration",
+    "headers": {},
+    "query": {},
+    "body": {
+      "minimumAwayTemperature": {
+        "celsius": {
+          "$param": "minimum_away_temperature_celsius"
+        }
+      },
+      "preheatingLevel": {
+        "$param": "preheating_level"
+      },
+      "type": {
+        "$param": "control_type"
+      }
+    },
+    "content_type": "application/json"
+  },
+  "requires_auth": true
+}

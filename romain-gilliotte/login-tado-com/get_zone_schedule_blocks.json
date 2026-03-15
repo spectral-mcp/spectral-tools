@@ -1,0 +1,35 @@
+{
+  "name": "get_zone_schedule_blocks",
+  "description": "Retrieve the scheduled temperature control blocks (time periods with specific setpoints) for a specific timetable in a zone. Returns the hourly or daily schedule blocks that define when and to what temperature a zone should be heated or cooled during normal operation.",
+  "parameters": {
+    "properties": {
+      "home_id": {
+        "description": "The ID of the home/account",
+        "type": "integer"
+      },
+      "timetable_id": {
+        "description": "The ID of the timetable to retrieve schedule blocks from",
+        "type": "integer"
+      },
+      "zone_id": {
+        "description": "The ID of the zone (room) to retrieve schedule blocks for",
+        "type": "integer"
+      }
+    },
+    "required": [
+      "home_id",
+      "zone_id",
+      "timetable_id"
+    ],
+    "type": "object"
+  },
+  "request": {
+    "method": "GET",
+    "url": "https://my.tado.com/api/v2/homes/{home_id}/zones/{zone_id}/schedule/timetables/{timetable_id}/blocks",
+    "headers": {},
+    "query": {},
+    "body": null,
+    "content_type": "application/json"
+  },
+  "requires_auth": true
+}
