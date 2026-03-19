@@ -1,0 +1,41 @@
+{
+  "name": "set_active_schedule_timetable",
+  "description": "Sets/activates a specific heating schedule timetable for a zone. Allows users to switch between different available schedules (e.g., ONE_DAY, THREE_DAY, SEVEN_DAY) to apply a new schedule template to the zone. This enables users to change which schedule pattern controls the zone's heating.",
+  "parameters": {
+    "properties": {
+      "home_id": {
+        "description": "The unique identifier of the home/installation",
+        "type": "string"
+      },
+      "timetable_id": {
+        "description": "The ID of the schedule timetable to activate (e.g., 1 for THREE_DAY, 2 for SEVEN_DAY)",
+        "type": "integer"
+      },
+      "zone_id": {
+        "description": "The unique identifier of the heating zone/room",
+        "type": "string"
+      }
+    },
+    "required": [
+      "home_id",
+      "zone_id",
+      "timetable_id"
+    ],
+    "type": "object"
+  },
+  "request": {
+    "method": "PUT",
+    "url": "https://my.tado.com/api/v2/homes/{home_id}/zones/{zone_id}/schedule/activeTimetable?ngsw-bypass=true",
+    "headers": {
+      "content-type": "application/json"
+    },
+    "query": {},
+    "body": {
+      "id": {
+        "$param": "timetable_id"
+      }
+    },
+    "content_type": "application/json"
+  },
+  "requires_auth": true
+}

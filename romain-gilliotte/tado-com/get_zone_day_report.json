@@ -1,0 +1,35 @@
+{
+  "name": "get_zone_day_report",
+  "description": "Retrieves a daily report for a specific heating zone on a given date. Returns detailed climate data and heating activity information for that day, including temperature history, heating runtime, energy consumption, and other performance metrics. Used to view historical heating performance and activity logs for analysis and optimization.",
+  "parameters": {
+    "properties": {
+      "date": {
+        "description": "The date for which to retrieve the day report, in YYYY-MM-DD format",
+        "type": "string"
+      },
+      "home_id": {
+        "description": "The unique identifier of the home",
+        "type": "string"
+      },
+      "zone_id": {
+        "description": "The unique identifier of the heating zone",
+        "type": "string"
+      }
+    },
+    "required": [
+      "home_id",
+      "zone_id",
+      "date"
+    ],
+    "type": "object"
+  },
+  "request": {
+    "method": "GET",
+    "url": "https://my.tado.com/api/v2/homes/{home_id}/zones/{zone_id}/dayReport?date={date}&ngsw-bypass=true",
+    "headers": {},
+    "query": {},
+    "body": null,
+    "content_type": "application/json"
+  },
+  "requires_auth": true
+}

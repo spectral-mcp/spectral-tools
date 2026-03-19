@@ -1,0 +1,34 @@
+{
+  "name": "get_tariff_account_and_permissions",
+  "description": "Retrieve tariff account details and permissions for a home, including ownership status, home link status, and pending link status",
+  "parameters": {
+    "properties": {
+      "home_id": {
+        "description": "The ID of the home to retrieve tariff account and permissions for",
+        "type": "string"
+      }
+    },
+    "required": [
+      "home_id"
+    ],
+    "type": "object"
+  },
+  "request": {
+    "method": "POST",
+    "url": "https://ext.api.tado.com/apps/graphql/apps/graphql",
+    "headers": {},
+    "query": {
+      "ngsw-bypass": "true"
+    },
+    "body": {
+      "query": "query TariffAccountAndPermissions($homeId: ID!) { home(id: $homeId) { tariff { account { isOwnedByCurrentUser isLinkedToHome isPendingHomeLink } accessPermissions { canAccessEnergyReadings canAccessEnergyPrices canAccessPushNotificationSettings } } } }",
+      "variables": {
+        "homeId": {
+          "$param": "home_id"
+        }
+      }
+    },
+    "content_type": "application/json"
+  },
+  "requires_auth": true
+}

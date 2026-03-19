@@ -1,0 +1,132 @@
+{
+  "name": "update_zone_schedule_time_blocks",
+  "description": "Updates the time blocks for a specific day in a heating schedule for a zone. Allows users to modify the heating schedule by setting custom time blocks with specific start/end times, temperature setpoints, and heating power mode (ON/OFF) for individual days of the week. This enables granular control over daily heating schedules.",
+  "parameters": {
+    "properties": {
+      "day_of_week": {
+        "description": "The day of the week to update the time blocks for",
+        "enum": [
+          "MONDAY",
+          "TUESDAY",
+          "WEDNESDAY",
+          "THURSDAY",
+          "FRIDAY",
+          "SATURDAY",
+          "SUNDAY"
+        ],
+        "type": "string"
+      },
+      "home_id": {
+        "description": "The unique identifier of the home",
+        "type": "string"
+      },
+      "time_blocks": {
+        "description": "Array of time blocks defining the schedule for the specified day",
+        "items": {
+          "properties": {
+            "dayType": {
+              "description": "The day type this block applies to",
+              "enum": [
+                "MONDAY",
+                "TUESDAY",
+                "WEDNESDAY",
+                "THURSDAY",
+                "FRIDAY",
+                "SATURDAY",
+                "SUNDAY"
+              ],
+              "type": "string"
+            },
+            "end": {
+              "description": "End time of the block in HH:MM format (24-hour)",
+              "pattern": "^([0-1][0-9]|2[0-3]):[0-5][0-9]$",
+              "type": "string"
+            },
+            "geolocationOverride": {
+              "description": "Whether geolocation control is enabled for this block",
+              "type": "boolean"
+            },
+            "setting": {
+              "description": "Heating setting for this time block",
+              "properties": {
+                "power": {
+                  "description": "Whether heating is ON or OFF for this block",
+                  "enum": [
+                    "ON",
+                    "OFF"
+                  ],
+                  "type": "string"
+                },
+                "temperature": {
+                  "description": "Temperature setting object (required when power is ON)",
+                  "properties": {
+                    "celsius": {
+                      "description": "Target temperature in Celsius (e.g., 18.5, 19.5, 20.0)",
+                      "type": "number"
+                    }
+                  },
+                  "type": "object"
+                },
+                "type": {
+                  "description": "The type of heating control",
+                  "enum": [
+                    "HEATING"
+                  ],
+                  "type": "string"
+                }
+              },
+              "required": [
+                "type",
+                "power"
+              ],
+              "type": "object"
+            },
+            "start": {
+              "description": "Start time of the block in HH:MM format (24-hour)",
+              "pattern": "^([0-1][0-9]|2[0-3]):[0-5][0-9]$",
+              "type": "string"
+            }
+          },
+          "required": [
+            "dayType",
+            "start",
+            "end",
+            "geolocationOverride",
+            "setting"
+          ],
+          "type": "object"
+        },
+        "type": "array"
+      },
+      "timetable_id": {
+        "description": "The unique identifier of the heating schedule timetable (e.g., '1' for ONE_DAY, '2' for SEVEN_DAY)",
+        "type": "string"
+      },
+      "zone_id": {
+        "description": "The unique identifier of the heating zone/room",
+        "type": "string"
+      }
+    },
+    "required": [
+      "home_id",
+      "zone_id",
+      "timetable_id",
+      "day_of_week",
+      "time_blocks"
+    ],
+    "type": "object"
+  },
+  "request": {
+    "method": "PUT",
+    "url": "https://my.tado.com/api/v2/homes/{home_id}/zones/{zone_id}/schedule/timetables/{timetable_id}/blocks/{day_of_week}",
+    "headers": {},
+    "query": {
+      "ngsw-bypass": "true"
+    },
+    "body": {
+      "$param": "time_blocks"
+    },
+    "content_type": "application/json"
+  },
+  "requires_auth": true
+}

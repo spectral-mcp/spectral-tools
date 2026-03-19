@@ -1,0 +1,53 @@
+{
+  "name": "simulate_cost_impact",
+  "description": "Simulates and calculates the estimated energy cost savings or impact of adjusting room temperatures by specified deltas. Allows users to see how temperature changes affect their heating bills by providing per-zone temperature adjustments.",
+  "parameters": {
+    "properties": {
+      "home_id": {
+        "description": "The unique identifier of the home",
+        "type": "integer"
+      },
+      "temperature_delta_per_zone": {
+        "description": "List of zones with their respective temperature delta adjustments in degrees Celsius",
+        "items": {
+          "properties": {
+            "setTemperatureDelta": {
+              "description": "The temperature adjustment delta in degrees Celsius (positive to increase, negative to decrease)",
+              "type": "number"
+            },
+            "zone": {
+              "description": "The zone ID",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "zone",
+            "setTemperatureDelta"
+          ],
+          "type": "object"
+        },
+        "type": "array"
+      }
+    },
+    "required": [
+      "home_id",
+      "temperature_delta_per_zone"
+    ],
+    "type": "object"
+  },
+  "request": {
+    "method": "POST",
+    "url": "https://energy-insights.tado.com/api/homes/{home_id}/costSimulator?ngsw-bypass=true",
+    "headers": {
+      "content-type": "application/json"
+    },
+    "query": {},
+    "body": {
+      "temperatureDeltaPerZone": {
+        "$param": "temperature_delta_per_zone"
+      }
+    },
+    "content_type": "application/json"
+  },
+  "requires_auth": true
+}

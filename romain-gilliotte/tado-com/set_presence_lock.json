@@ -1,0 +1,40 @@
+{
+  "name": "set_presence_lock",
+  "description": "Sets or updates the presence lock status for a home, controlling whether geofencing-based presence detection is enabled or locked to a specific state (HOME or AWAY). This allows users to override automatic geofencing detection and manually lock the system into a home or away mode, affecting how the heating system responds to occupancy.",
+  "parameters": {
+    "properties": {
+      "home_id": {
+        "description": "The unique identifier of the home installation",
+        "type": "string"
+      },
+      "home_presence": {
+        "description": "The presence state to lock the home into. HOME indicates the home is occupied; AWAY indicates the home is unoccupied.",
+        "enum": [
+          "HOME",
+          "AWAY"
+        ],
+        "type": "string"
+      }
+    },
+    "required": [
+      "home_id",
+      "home_presence"
+    ],
+    "type": "object"
+  },
+  "request": {
+    "method": "PUT",
+    "url": "https://my.tado.com/api/v2/homes/{home_id}/presenceLock?ngsw-bypass=true",
+    "headers": {
+      "content-type": "application/json"
+    },
+    "query": {},
+    "body": {
+      "homePresence": {
+        "$param": "home_presence"
+      }
+    },
+    "content_type": "application/json"
+  },
+  "requires_auth": true
+}

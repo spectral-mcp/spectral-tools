@@ -1,0 +1,68 @@
+{
+  "name": "set_zone_away_configuration",
+  "description": "Updates the away mode configuration for a specific heating zone. Allows customization of how the heating system behaves when the home is unoccupied, including setting minimum away temperatures and controlling early start pre-heating levels (OFF, ECO, MEDIUM, or COMFORT).",
+  "parameters": {
+    "properties": {
+      "home_id": {
+        "description": "The unique identifier of the home installation",
+        "type": "string"
+      },
+      "minimum_away_temperature": {
+        "description": "The minimum temperature in Celsius to maintain when the home is unoccupied (away mode)",
+        "type": "number"
+      },
+      "preheating_level": {
+        "description": "The early start pre-heating level when away: OFF (disabled), ECO (energy-saving pre-heat), MEDIUM (balanced pre-heat), or COMFORT (maximum pre-heat comfort)",
+        "enum": [
+          "OFF",
+          "ECO",
+          "MEDIUM",
+          "COMFORT"
+        ],
+        "type": "string"
+      },
+      "zone_id": {
+        "description": "The unique identifier of the heating zone to configure",
+        "type": "string"
+      },
+      "zone_type": {
+        "description": "The type of zone (typically 'HEATING' for heating zones)",
+        "enum": [
+          "HEATING"
+        ],
+        "type": "string"
+      }
+    },
+    "required": [
+      "home_id",
+      "zone_id",
+      "zone_type",
+      "preheating_level",
+      "minimum_away_temperature"
+    ],
+    "type": "object"
+  },
+  "request": {
+    "method": "PUT",
+    "url": "https://my.tado.com/api/v2/homes/{home_id}/zones/{zone_id}/awayConfiguration?ngsw-bypass=true",
+    "headers": {
+      "content-type": "application/json"
+    },
+    "query": {},
+    "body": {
+      "minimumAwayTemperature": {
+        "celsius": {
+          "$param": "minimum_away_temperature"
+        }
+      },
+      "preheatingLevel": {
+        "$param": "preheating_level"
+      },
+      "type": {
+        "$param": "zone_type"
+      }
+    },
+    "content_type": "application/json"
+  },
+  "requires_auth": true
+}

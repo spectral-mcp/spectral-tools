@@ -1,0 +1,85 @@
+{
+  "name": "set_zone_overlay",
+  "description": "Applies a temporary heating override to a specific zone, allowing users to manually set the target temperature and heating power status. The override can be configured to terminate automatically at the next scheduled time block or after a specified duration. Used to temporarily adjust comfort settings without disrupting the schedule.",
+  "parameters": {
+    "properties": {
+      "duration_seconds": {
+        "description": "Duration in seconds for the override when termination_type is TIMER. Required if termination_type is TIMER.",
+        "type": "integer"
+      },
+      "home_id": {
+        "description": "The unique identifier of the home installation",
+        "type": "string"
+      },
+      "is_boost": {
+        "description": "Whether this is a boost override (optional, defaults to false)",
+        "type": "boolean"
+      },
+      "power": {
+        "description": "Set heating power to ON or OFF",
+        "enum": [
+          "ON",
+          "OFF"
+        ],
+        "type": "string"
+      },
+      "temperature_celsius": {
+        "description": "Target temperature in Celsius. Required when power is ON.",
+        "type": "number"
+      },
+      "termination_type": {
+        "description": "How the override should terminate: NEXT_TIME_BLOCK (end at next scheduled time), or TIMER (end after specified duration in seconds)",
+        "enum": [
+          "NEXT_TIME_BLOCK",
+          "TIMER"
+        ],
+        "type": "string"
+      },
+      "zone_id": {
+        "description": "The unique identifier of the heating zone to apply the override to",
+        "type": "string"
+      }
+    },
+    "required": [
+      "home_id",
+      "zone_id",
+      "termination_type",
+      "power"
+    ],
+    "type": "object"
+  },
+  "request": {
+    "method": "PUT",
+    "url": "https://my.tado.com/api/v2/homes/{home_id}/zones/{zone_id}/overlay?ngsw-bypass=true",
+    "headers": {
+      "content-type": "application/json"
+    },
+    "query": {},
+    "body": {
+      "setting": {
+        "isBoost": {
+          "$param": "is_boost"
+        },
+        "power": {
+          "$param": "power"
+        },
+        "temperature": {
+          "celsius": {
+            "$param": "temperature_celsius"
+          }
+        },
+        "type": "HEATING"
+      },
+      "termination": {
+        "durationInSeconds": {
+          "$param": "duration_seconds"
+        },
+        "typeSkillBasedApp": {
+          "$param": "termination_type"
+        }
+      }
+    },
+    "content_type": "application/json"
+  },
+  "requires_auth": true
+}

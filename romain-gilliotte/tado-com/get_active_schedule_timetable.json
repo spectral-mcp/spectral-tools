@@ -1,0 +1,30 @@
+{
+  "name": "get_active_schedule_timetable",
+  "description": "Retrieves the currently active heating schedule timetable for a specific zone, indicating which schedule is active and its configuration details. Returns the ID and type of the active schedule (e.g., SEVEN_DAY, THREE_DAY) to show which preset schedule is currently in effect for the zone.",
+  "parameters": {
+    "properties": {
+      "home_id": {
+        "description": "The unique identifier of the home",
+        "type": "string"
+      },
+      "zone_id": {
+        "description": "The unique identifier of the heating zone/room",
+        "type": "string"
+      }
+    },
+    "required": [
+      "home_id",
+      "zone_id"
+    ],
+    "type": "object"
+  },
+  "request": {
+    "method": "GET",
+    "url": "https://my.tado.com/api/v2/homes/{home_id}/zones/{zone_id}/schedule/activeTimetable?ngsw-bypass=true",
+    "headers": {},
+    "query": {},
+    "body": null,
+    "content_type": "application/json"
+  },
+  "requires_auth": true
+}

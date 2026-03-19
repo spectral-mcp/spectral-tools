@@ -1,0 +1,25 @@
+{
+  "name": "get_home_weather",
+  "description": "Retrieves current weather information for the home's location. Returns outdoor weather conditions such as temperature, precipitation, and other meteorological data to inform heating decisions and display environmental context to users.",
+  "parameters": {
+    "properties": {
+      "home_id": {
+        "description": "The unique identifier of the home for which to retrieve weather information",
+        "type": "string"
+      }
+    },
+    "required": [
+      "home_id"
+    ],
+    "type": "object"
+  },
+  "request": {
+    "method": "GET",
+    "url": "https://my.tado.com/api/v2/homes/{home_id}/weather?ngsw-bypass=true",
+    "headers": {},
+    "query": {},
+    "body": null,
+    "content_type": "application/json"
+  },
+  "requires_auth": true
+}
