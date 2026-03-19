@@ -1,0 +1,31 @@
+{
+  "name": "get_energy_consumption_overview",
+  "description": "Retrieves a monthly energy consumption overview for a home, showing heating energy usage patterns, costs, and metrics for a specified month. Provides detailed consumption data including current month actual usage, previous month comparison, year-over-year comparison, and end-of-month forecasts. Allows users to view and track their historical energy consumption trends and analyze heating efficiency.",
+  "parameters": {
+    "properties": {
+      "home_id": {
+        "description": "The unique identifier of the home for which to retrieve energy consumption data",
+        "type": "string"
+      },
+      "month": {
+        "description": "The month for which to retrieve consumption data, in YYYY-MM format (e.g., 2026-03)",
+        "pattern": "^\\d{4}-\\d{2}$",
+        "type": "string"
+      }
+    },
+    "required": [
+      "home_id",
+      "month"
+    ],
+    "type": "object"
+  },
+  "request": {
+    "method": "GET",
+    "url": "https://energy-insights.tado.com/api/homes/{home_id}/consumptionOverview?month={month}&ngsw-bypass=true",
+    "headers": {},
+    "query": {},
+    "body": null,
+    "content_type": "application/json"
+  },
+  "requires_auth": true
+}

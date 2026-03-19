@@ -1,0 +1,27 @@
+{
+  "name": "get_home_incidents",
+  "description": "Retrieve system incidents and alerts for a home, such as device errors, connectivity issues, or heating system warnings. Returns a list of all incidents/alerts currently affecting the home.",
+  "parameters": {
+    "properties": {
+      "home_id": {
+        "description": "The unique identifier for the home",
+        "type": "integer"
+      }
+    },
+    "required": [
+      "home_id"
+    ],
+    "type": "object"
+  },
+  "request": {
+    "method": "GET",
+    "url": "https://minder.tado.com/v1/v1/homes/{home_id}/incidents",
+    "headers": {},
+    "query": {
+      "ngsw-bypass": "true"
+    },
+    "body": null,
+    "content_type": "application/json"
+  },
+  "requires_auth": true
+}

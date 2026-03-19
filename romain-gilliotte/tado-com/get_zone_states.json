@@ -1,0 +1,27 @@
+{
+  "name": "get_zone_states",
+  "description": "Retrieves the current state of all heating zones in a home, including current temperature, target temperature, heating mode (on/off), and overlay/schedule status for each zone. Returns real-time climate control information for all rooms such as tado mode, power setting, temperature readings, humidity, and next scheduled changes.",
+  "parameters": {
+    "properties": {
+      "home_id": {
+        "description": "The unique identifier of the home installation",
+        "type": "string"
+      }
+    },
+    "required": [
+      "home_id"
+    ],
+    "type": "object"
+  },
+  "request": {
+    "method": "GET",
+    "url": "https://my.tado.com/api/v2/homes/{home_id}/zoneStates",
+    "headers": {},
+    "query": {
+      "ngsw-bypass": "true"
+    },
+    "body": null,
+    "content_type": "application/json"
+  },
+  "requires_auth": true
+}

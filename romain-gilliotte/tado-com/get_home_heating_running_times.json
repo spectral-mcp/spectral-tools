@@ -1,0 +1,66 @@
+{
+  "name": "get_home_heating_running_times",
+  "description": "Retrieve historical heating system running times and activity for a home. Returns timeline of when the heating was active, duration, and related metrics useful for analyzing heating performance and energy consumption patterns. Supports filtering by date range and aggregation by time period (day, month).",
+  "parameters": {
+    "properties": {
+      "aggregate": {
+        "description": "Time period aggregation level (optional, default none)",
+        "enum": [
+          "day",
+          "month"
+        ],
+        "type": "string"
+      },
+      "animate": {
+        "description": "Enable animation/detailed timeline (optional, default false)",
+        "type": "boolean"
+      },
+      "from": {
+        "description": "Start date for the running times data in YYYY-MM-DD format (required)",
+        "type": "string"
+      },
+      "home_id": {
+        "description": "The unique identifier of the home",
+        "type": "string"
+      },
+      "summary_only": {
+        "description": "Return only summary statistics without detailed records (optional, default false)",
+        "type": "boolean"
+      },
+      "to": {
+        "description": "End date for the running times data in YYYY-MM-DD format (optional)",
+        "type": "string"
+      }
+    },
+    "required": [
+      "home_id",
+      "from"
+    ],
+    "type": "object"
+  },
+  "request": {
+    "method": "GET",
+    "url": "https://minder.tado.com/v1/homes/{home_id}/runningTimes",
+    "headers": {},
+    "query": {
+      "aggregate": {
+        "$param": "aggregate"
+      },
+      "animate": {
+        "$param": "animate"
+      },
+      "from": {
+        "$param": "from"
+      },
+      "summary_only": {
+        "$param": "summary_only"
+      },
+      "to": {
+        "$param": "to"
+      }
+    },
+    "body": null,
+    "content_type": "application/json"
+  },
+  "requires_auth": true
+}

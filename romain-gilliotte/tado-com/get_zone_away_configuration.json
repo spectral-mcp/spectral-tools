@@ -1,0 +1,30 @@
+{
+  "name": "get_zone_away_configuration",
+  "description": "Retrieves the away mode configuration for a specific heating zone, including settings for when the home is unoccupied such as away temperature setpoints, early start behavior, and other absence-related climate control preferences. Returns the configured away mode parameters to display to users or use for scheduling decisions.",
+  "parameters": {
+    "properties": {
+      "home_id": {
+        "description": "The unique identifier of the home/installation",
+        "type": "string"
+      },
+      "zone_id": {
+        "description": "The unique identifier of the heating zone",
+        "type": "string"
+      }
+    },
+    "required": [
+      "home_id",
+      "zone_id"
+    ],
+    "type": "object"
+  },
+  "request": {
+    "method": "GET",
+    "url": "https://my.tado.com/api/v2/homes/{home_id}/zones/{zone_id}/awayConfiguration?ngsw-bypass=true",
+    "headers": {},
+    "query": {},
+    "body": null,
+    "content_type": "application/json"
+  },
+  "requires_auth": true
+}

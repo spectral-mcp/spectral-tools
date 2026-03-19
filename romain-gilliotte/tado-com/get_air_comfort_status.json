@@ -1,0 +1,25 @@
+{
+  "name": "get_air_comfort_status",
+  "description": "Retrieves the air comfort status and environmental conditions for a home. Returns air quality freshness metrics, comfort levels (temperature and humidity) per room, and visual coordinate data representing comfort levels. Used to monitor and display indoor air quality and environmental comfort status for all zones/rooms in the home.",
+  "parameters": {
+    "properties": {
+      "home_id": {
+        "description": "The unique identifier of the home/installation to retrieve air comfort status for",
+        "type": "string"
+      }
+    },
+    "required": [
+      "home_id"
+    ],
+    "type": "object"
+  },
+  "request": {
+    "method": "GET",
+    "url": "https://my.tado.com/api/v2/homes/{home_id}/airComfort?ngsw-bypass=true",
+    "headers": {},
+    "query": {},
+    "body": null,
+    "content_type": "application/json"
+  },
+  "requires_auth": true
+}

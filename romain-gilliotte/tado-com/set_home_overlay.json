@@ -1,0 +1,118 @@
+{
+  "name": "set_home_overlay",
+  "description": "Applies a temporary heating override to all zones in a home simultaneously. Allows users to manually set heating power status (e.g., boost heating, turn off all zones) across the entire installation. The override can be configured to terminate automatically at the next scheduled time block or after a specified duration. Used for whole-home comfort adjustments without disrupting individual zone schedules.",
+  "parameters": {
+    "properties": {
+      "home_id": {
+        "description": "The unique identifier of the home/installation for which to apply the overlay",
+        "type": "string"
+      },
+      "overlays": {
+        "description": "Array of overlay configurations, one per zone/room to be controlled",
+        "items": {
+          "properties": {
+            "overlay": {
+              "description": "The overlay configuration for this room",
+              "properties": {
+                "setting": {
+                  "description": "The heating setting to apply",
+                  "properties": {
+                    "isBoost": {
+                      "description": "Whether this is a boost heating setting (optional)",
+                      "type": "boolean"
+                    },
+                    "power": {
+                      "description": "Whether heating should be ON or OFF",
+                      "enum": [
+                        "ON",
+                        "OFF"
+                      ],
+                      "type": "string"
+                    },
+                    "temperature": {
+                      "description": "Target temperature setting (optional, used when power is ON)",
+                      "properties": {
+                        "celsius": {
+                          "description": "Target temperature in Celsius",
+                          "type": "integer"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "type": {
+                      "description": "The type of heating setting (e.g., 'HEATING')",
+                      "enum": [
+                        "HEATING"
+                      ],
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "type",
+                    "power"
+                  ],
+                  "type": "object"
+                },
+                "termination": {
+                  "description": "Configuration for when/how the overlay should terminate",
+                  "properties": {
+                    "durationInSeconds": {
+                      "description": "Duration in seconds for the override (used with TIMER termination)",
+                      "type": "integer"
+                    },
+                    "typeSkillBasedApp": {
+                      "description": "The termination type - TIMER for duration-based, MANUAL for manual resumption",
+                      "enum": [
+                        "TIMER",
+                        "MANUAL"
+                      ],
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "typeSkillBasedApp"
+                  ],
+                  "type": "object"
+                }
+              },
+              "required": [
+                "setting",
+                "termination"
+              ],
+              "type": "object"
+            },
+            "room": {
+              "description": "The zone/room ID to which this overlay setting applies",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "room",
+            "overlay"
+          ],
+          "type": "object"
+        },
+        "minItems": 1,
+        "type": "array"
+      }
+    },
+    "required": [
+      "home_id",
+      "overlays"
+    ],
+    "type": "object"
+  },
+  "request": {
+    "method": "POST",
+    "url": "https://my.tado.com/api/v2/homes/{home_id}/overlay?ngsw-bypass=true",
+    "headers": {},
+    "query": {},
+    "body": {
+      "overlays": {
+        "$param": "overlays"
+      }
+    },
+    "content_type": "application/json"
+  },
+  "requires_auth": true
+}

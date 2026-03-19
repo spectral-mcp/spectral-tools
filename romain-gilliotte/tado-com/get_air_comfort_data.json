@@ -1,0 +1,50 @@
+{
+  "name": "get_air_comfort_data",
+  "description": "Retrieve air comfort metrics and environmental data for a specific home location, including temperature, humidity, and air quality information based on geographic coordinates and device generation",
+  "parameters": {
+    "properties": {
+      "generation": {
+        "description": "The device generation identifier (e.g., 'PRE_LINE_X')",
+        "type": "string"
+      },
+      "home_id": {
+        "description": "The unique identifier for the home",
+        "type": "integer"
+      },
+      "latitude": {
+        "description": "The latitude coordinate of the home location",
+        "type": "number"
+      },
+      "longitude": {
+        "description": "The longitude coordinate of the home location",
+        "type": "number"
+      }
+    },
+    "required": [
+      "home_id",
+      "latitude",
+      "longitude",
+      "generation"
+    ],
+    "type": "object"
+  },
+  "request": {
+    "method": "GET",
+    "url": "https://acme.tado.com/v1/v1/homes/{home_id}/airComfort",
+    "headers": {},
+    "query": {
+      "generation": {
+        "$param": "generation"
+      },
+      "latitude": {
+        "$param": "latitude"
+      },
+      "longitude": {
+        "$param": "longitude"
+      }
+    },
+    "body": null,
+    "content_type": "application/json"
+  },
+  "requires_auth": true
+}

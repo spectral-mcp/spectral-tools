@@ -1,0 +1,25 @@
+{
+  "name": "get_heating_system_info",
+  "description": "Retrieves detailed information about the heating system installed in a home, including system type (e.g., boiler, heat pump, underfloor heating), manufacturer details, capabilities, and technical specifications. Used to understand the heating equipment configuration and display system information to users for diagnostic purposes and feature availability checks.",
+  "parameters": {
+    "properties": {
+      "home_id": {
+        "description": "The unique identifier of the home for which to retrieve heating system information.",
+        "type": "string"
+      }
+    },
+    "required": [
+      "home_id"
+    ],
+    "type": "object"
+  },
+  "request": {
+    "method": "GET",
+    "url": "https://my.tado.com/api/v2/homes/{home_id}/heatingSystem?ngsw-bypass=true",
+    "headers": {},
+    "query": {},
+    "body": null,
+    "content_type": "application/json"
+  },
+  "requires_auth": true
+}

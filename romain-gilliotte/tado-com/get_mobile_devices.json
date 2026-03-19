@@ -1,0 +1,25 @@
+{
+  "name": "get_mobile_devices",
+  "description": "Retrieves the list of mobile devices (phones/smartphones) registered to a home account. Returns device identifiers, names, platform information (iOS/Android), device model details, OS version, locale information, and user preferences including geofencing tracking status, notification settings, and special offers configuration. Used for managing which devices can control the system and for geofencing-based presence detection.",
+  "parameters": {
+    "properties": {
+      "home_id": {
+        "description": "The unique identifier of the home/installation whose mobile devices should be retrieved",
+        "type": "string"
+      }
+    },
+    "required": [
+      "home_id"
+    ],
+    "type": "object"
+  },
+  "request": {
+    "method": "GET",
+    "url": "https://my.tado.com/api/v2/homes/{home_id}/mobileDevices?ngsw-bypass=true",
+    "headers": {},
+    "query": {},
+    "body": null,
+    "content_type": "application/json"
+  },
+  "requires_auth": true
+}

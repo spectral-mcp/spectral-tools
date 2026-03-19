@@ -1,0 +1,25 @@
+{
+  "name": "get_home_state",
+  "description": "Retrieves the overall state and status of a home, including presence/geofencing status and global home-level settings. Returns aggregate information about whether anyone is home and whether presence detection is locked.",
+  "parameters": {
+    "properties": {
+      "home_id": {
+        "description": "The unique identifier of the home/installation",
+        "type": "string"
+      }
+    },
+    "required": [
+      "home_id"
+    ],
+    "type": "object"
+  },
+  "request": {
+    "method": "GET",
+    "url": "https://my.tado.com/api/v2/homes/{home_id}/state?ngsw-bypass=true",
+    "headers": {},
+    "query": {},
+    "body": null,
+    "content_type": "application/json"
+  },
+  "requires_auth": true
+}
