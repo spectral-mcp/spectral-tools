@@ -1,0 +1,42 @@
+{
+  "name": "get_monthly_temperature_measures",
+  "description": "Retrieve monthly temperature measurements for a home within a specified date range for temperature tracking and historical climate data analysis",
+  "parameters": {
+    "properties": {
+      "end_date": {
+        "description": "The end date for the temperature data range (ISO 8601 format with timezone, e.g., 2026-03-01T00:00:00+01:00)",
+        "type": "string"
+      },
+      "home_id": {
+        "description": "The unique identifier of the home for which to retrieve temperature measurements",
+        "type": "string"
+      },
+      "start_date": {
+        "description": "The start date for the temperature data range (ISO 8601 format with timezone, e.g., 2026-02-01T00:00:00+01:00)",
+        "type": "string"
+      }
+    },
+    "required": [
+      "home_id",
+      "start_date",
+      "end_date"
+    ],
+    "type": "object"
+  },
+  "request": {
+    "method": "GET",
+    "url": "https://www.hellowatt.fr/api/homes/{home_id}/temperature_measures/monthly",
+    "headers": {},
+    "query": {
+      "endDate": {
+        "$param": "end_date"
+      },
+      "startDate": {
+        "$param": "start_date"
+      }
+    },
+    "body": null,
+    "content_type": "application/json"
+  },
+  "requires_auth": true
+}

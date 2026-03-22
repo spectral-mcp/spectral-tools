@@ -1,0 +1,27 @@
+{
+  "name": "list_remote_electric_vehicles",
+  "description": "Retrieve list of remote-controlled electric vehicles associated with a home for charging management and vehicle status monitoring",
+  "parameters": {
+    "properties": {
+      "home_id": {
+        "description": "The unique identifier of the home",
+        "type": "string"
+      }
+    },
+    "required": [
+      "home_id"
+    ],
+    "type": "object"
+  },
+  "request": {
+    "method": "GET",
+    "url": "https://www.hellowatt.fr/api/homes/{home_id}/remote-elec-vehicles",
+    "headers": {
+      "accept": "application/json; version=1.54"
+    },
+    "query": {},
+    "body": null,
+    "content_type": "application/json"
+  },
+  "requires_auth": true
+}

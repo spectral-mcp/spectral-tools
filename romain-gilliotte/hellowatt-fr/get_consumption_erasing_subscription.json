@@ -1,0 +1,25 @@
+{
+  "name": "get_consumption_erasing_subscription",
+  "description": "Retrieve the status and details of a consumption data erasing subscription for a home, including subscription status, eligibility, terms acceptance, and settings for managing personal data retention and privacy preferences",
+  "parameters": {
+    "properties": {
+      "home_id": {
+        "description": "The unique identifier of the home for which to retrieve the consumption erasing subscription details",
+        "type": "string"
+      }
+    },
+    "required": [
+      "home_id"
+    ],
+    "type": "object"
+  },
+  "request": {
+    "method": "GET",
+    "url": "https://www.hellowatt.fr/api/homes/{home_id}/consumption_erasing_subscription",
+    "headers": {},
+    "query": {},
+    "body": null,
+    "content_type": "application/json"
+  },
+  "requires_auth": true
+}
