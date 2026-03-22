@@ -1,0 +1,44 @@
+{
+  "name": "get_daily_consumption_measures",
+  "description": "Retrieve daily electricity consumption measurements for a home within a specified date range for consumption tracking and historical data analysis",
+  "parameters": {
+    "properties": {
+      "end_date": {
+        "description": "End date and time in ISO 8601 format (e.g., 2026-04-01T00:00:00+02:00)",
+        "type": "string"
+      },
+      "home_id": {
+        "description": "The unique identifier of the home",
+        "type": "string"
+      },
+      "start_date": {
+        "description": "Start date and time in ISO 8601 format (e.g., 2026-03-01T00:00:00+01:00)",
+        "type": "string"
+      }
+    },
+    "required": [
+      "home_id",
+      "start_date",
+      "end_date"
+    ],
+    "type": "object"
+  },
+  "request": {
+    "method": "GET",
+    "url": "https://www.hellowatt.fr/api/homes/{home_id}/sge_measures/conso_daily",
+    "headers": {
+      "accept": "application/json; version=1.54"
+    },
+    "query": {
+      "endDate": {
+        "$param": "end_date"
+      },
+      "startDate": {
+        "$param": "start_date"
+      }
+    },
+    "body": null,
+    "content_type": "application/json"
+  },
+  "requires_auth": true
+}

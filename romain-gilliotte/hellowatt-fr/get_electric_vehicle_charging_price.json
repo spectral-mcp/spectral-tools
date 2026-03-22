@@ -1,0 +1,30 @@
+{
+  "name": "get_electric_vehicle_charging_price",
+  "description": "Retrieve the current pricing information for electric vehicle charging costs associated with a home for charging cost tracking and budgeting analysis",
+  "parameters": {
+    "properties": {
+      "contract_id": {
+        "description": "The unique identifier of the electricity contract for which to retrieve the charging price",
+        "type": "string"
+      },
+      "home_id": {
+        "description": "The unique identifier of the home for which to retrieve electric vehicle charging price information",
+        "type": "string"
+      }
+    },
+    "required": [
+      "home_id",
+      "contract_id"
+    ],
+    "type": "object"
+  },
+  "request": {
+    "method": "GET",
+    "url": "https://www.hellowatt.fr/api/homes/{home_id}/elec-car-price/{contract_id}",
+    "headers": {},
+    "query": {},
+    "body": null,
+    "content_type": "application/json"
+  },
+  "requires_auth": true
+}

@@ -1,0 +1,27 @@
+{
+  "name": "get_home_contracts",
+  "description": "Retrieve electricity contracts associated with a specific home, including contract details, pricing plans, and terms for contract management and billing information",
+  "parameters": {
+    "properties": {
+      "home_id": {
+        "description": "The unique identifier of the home for which to retrieve contracts",
+        "type": "integer"
+      }
+    },
+    "required": [
+      "home_id"
+    ],
+    "type": "object"
+  },
+  "request": {
+    "method": "GET",
+    "url": "https://www.hellowatt.fr/api/homes/{home_id}/contracts",
+    "headers": {
+      "accept": "application/json; version=1.54"
+    },
+    "query": {},
+    "body": null,
+    "content_type": "application/json"
+  },
+  "requires_auth": true
+}

@@ -1,0 +1,25 @@
+{
+  "name": "get_realized_savings_actions",
+  "description": "Retrieve the list of savings actions that have been realized or implemented for a home, including details about energy-saving measures undertaken and their outcomes for tracking and analyzing user progress toward energy efficiency goals",
+  "parameters": {
+    "properties": {
+      "home_id": {
+        "description": "The unique identifier of the home for which to retrieve realized savings actions",
+        "type": "string"
+      }
+    },
+    "required": [
+      "home_id"
+    ],
+    "type": "object"
+  },
+  "request": {
+    "method": "GET",
+    "url": "https://www.hellowatt.fr/api/homes/{home_id}/realized_savings_actions",
+    "headers": {},
+    "query": {},
+    "body": null,
+    "content_type": "application/json"
+  },
+  "requires_auth": true
+}

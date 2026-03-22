@@ -1,0 +1,38 @@
+{
+  "name": "get_monthly_nilm_consumption_breakdown",
+  "description": "Retrieve monthly electricity consumption breakdown by appliance or usage category for a home using Non-Intrusive Load Monitoring (NILM) analysis to identify individual appliance or device-level consumption patterns",
+  "parameters": {
+    "properties": {
+      "home_id": {
+        "description": "The unique identifier of the home for which to retrieve NILM consumption breakdown",
+        "type": "string"
+      },
+      "month": {
+        "description": "The month for which to retrieve consumption data (1-12)",
+        "type": "integer"
+      },
+      "year": {
+        "description": "The year for which to retrieve consumption data (e.g., 2026)",
+        "type": "integer"
+      }
+    },
+    "required": [
+      "home_id",
+      "year",
+      "month"
+    ],
+    "type": "object"
+  },
+  "request": {
+    "method": "GET",
+    "url": "https://www.hellowatt.fr/api/homes/{home_id}/nilm/monthly/{year}/{month}",
+    "headers": {
+      "accept": "application/json; version=1.54",
+      "x-requested-with": "XMLHttpRequest"
+    },
+    "query": {},
+    "body": null,
+    "content_type": "application/json"
+  },
+  "requires_auth": true
+}

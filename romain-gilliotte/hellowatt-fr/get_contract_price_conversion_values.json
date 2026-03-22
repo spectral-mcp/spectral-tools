@@ -1,0 +1,34 @@
+{
+  "name": "get_contract_price_conversion_values",
+  "description": "Retrieve contract price conversion values for a home, including pricing data and rate information used to convert or calculate electricity costs based on the selected pricing plan or index type (e.g., base rate vs. time-of-use pricing)",
+  "parameters": {
+    "properties": {
+      "home_id": {
+        "description": "The unique identifier of the home for which to retrieve contract price conversion values",
+        "type": "string"
+      },
+      "index_type": {
+        "description": "The pricing index type for conversion values (e.g., 'base' for base rate pricing, or other pricing plans)",
+        "type": "string"
+      }
+    },
+    "required": [
+      "home_id",
+      "index_type"
+    ],
+    "type": "object"
+  },
+  "request": {
+    "method": "GET",
+    "url": "https://www.hellowatt.fr/api/homes/{home_id}/contract_price_conversion_values",
+    "headers": {},
+    "query": {
+      "index_type": {
+        "$param": "index_type"
+      }
+    },
+    "body": null,
+    "content_type": "application/json"
+  },
+  "requires_auth": true
+}
